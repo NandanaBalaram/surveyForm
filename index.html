@@ -11,8 +11,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         * {
-            margin: 3px 3px 3px 3px;
-            padding: 3px 3px 3px 3px;
+            margin: 5px;
+            padding: 2px;
         }
 
         input,
@@ -44,7 +44,7 @@
 
         .inputName i {
             position: absolute;
-            left: 155px;
+            left: 150px;
             color: rgb(204, 196, 196);
         }
 
@@ -55,7 +55,7 @@
         #surverForm {
             position: absolute;
             border: #f0eeee solid 1px;
-            margin: 5px 250px 5px 250px;
+            margin: 5px 250px;
             padding: 25px;
             font-weight: bold;
         }
@@ -66,14 +66,14 @@
     </style>
 </head>
 
-<body style="padding: 60px">
-    <form id="surverForm">
+<body>
+    <form id="surverForm" method="POST">
 
         <div class="inputName">
             <label for="name">Name<span class="redStar">*</span></label><br>
 
-            <input type="text" name="name">
-            <i class="fa fa-info" aria-hidden="true"></i>
+            <input type="text" name="name" required>
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
             <input type="text" name="name" style="margin-left:20px"><br>
             <span style="font-weight:normal; font-size: small;">first</span>
             <span style="font-weight:normal; font-size: small; padding-left:170px">last</span>
@@ -174,11 +174,13 @@
         </div>
         <div>
             <p>Additional comments or suggestions</p>
-            <textarea name="message" rows="5" style="padding-left:80%"></textArea>
+            <textarea name="message" rows="5" cols="120"></textArea>
         </div>
         <div>
             <input type="submit" name="submit" style="padding: 10px 15px;">
         </div>
+
+        
 
     </form>
 
