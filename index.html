@@ -23,19 +23,24 @@
         table {
             width: 100%;
         }
-        tr{
-            border-radius:10px;
+
+        tr {
+            border-radius: 10px;
         }
-        td:first-child{
+
+        td:first-child {
             border-radius: 10px 0 0 10px
         }
-        td:last-child{
+
+        td:last-child {
             border-radius: 0 10px 10px 0
         }
+
         td {
             width: 1%;
             font-weight: lighter;
             text-align: center;
+            padding: 2px;
         }
 
         .inputName {
@@ -53,7 +58,7 @@
         }
 
         #surverForm {
-            position: absolute;
+            max-width:90%;
             border: #f0eeee solid 1px;
             margin: 5px 250px;
             padding: 25px;
@@ -62,6 +67,44 @@
 
         .redStar {
             color: red;
+        }
+
+        .rating {
+            overflow: hidden;
+            vertical-align: bottom;
+            display: inline-block;
+            width: auto;
+            height: 30px;
+        }
+
+        .rating>input {
+            opacity: 0;
+            margin-right: -100%;
+            color: #ccc;
+        }
+
+        .rating>label {
+            position: relative;
+            display: block;
+            float: right;
+            content: '★ ';
+            color: #ccc;
+        }
+
+        .rating>label:before {
+            display: block;
+            opacity:0;
+            width: 30px;
+            height: 30px;
+            content: '★ ';
+            color: orange;
+            transition: opacity 0.2s linear;
+        }
+
+        .rating>label:hover:before,
+        .rating>label:hover~label:before,
+        .rating:not(:hover)> :checked~label:before {
+            opacity: 1;
         }
     </style>
 </head>
@@ -81,18 +124,23 @@
 
         <div class="email">
             <label for="email">Email<span class="redStar">*</span></label><br>
-            <input type="email" name="email" style="padding-left: 200px;"><br>
+            <input type="email" name="email" size="50"><br>
         </div>
 
-        <div class="experience">
-
-            <label for="starChecked">Your Experience<span class="redStar">*</span></label><br>
-
-            <span class="fa fa-star starChecked"></span>
-            <span class="fa fa-star starChecked"></span>
-            <span class="fa fa-star starChecked"></span>
-            <span class="fa fa-star starChecked"></span>
-            <span class="fa fa-star starChecked"></span><br>
+        <div>
+            <p>Your Experience<span class="redStar">*</span></p>
+            <div class="rating">
+                <input id="rating5" type="radio" name="rating" value="5" checked>
+                <label for="rating5"></label>
+                <input id="rating4" type="radio" name="rating" value="4">
+                <label for="rating4"></label>
+                <input id="rating3" type="radio" name="rating" value="3">
+                <label for="rating3"></label>
+                <input id="rating2" type="radio" name="rating" value="2" >
+                <label for="rating2"></label>
+                <input id="rating1" type="radio" name="rating" value="1">
+                <label for="rating1"></label>
+            </div><br>
             <span style="font-size: smaller;font-weight: lighter;">Overall how would you rate you experience with
                 us?</span>
         </div>
@@ -174,13 +222,13 @@
         </div>
         <div>
             <p>Additional comments or suggestions</p>
-            <textarea name="message" rows="5" cols="120"></textArea>
+            <textarea name="message" rows="5" cols="105"></textArea>
         </div>
         <div>
             <input type="submit" name="submit" style="padding: 10px 15px;">
         </div>
 
-        
+
 
     </form>
 
