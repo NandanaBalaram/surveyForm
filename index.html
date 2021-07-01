@@ -14,7 +14,6 @@
             margin: 5px;
             padding: 2px;
         }
-
         input,
         textarea {
             border: #e0dfdf solid 1px;
@@ -69,43 +68,59 @@
             color: red;
         }
 
-        .rating {
-            overflow: hidden;
-            vertical-align: bottom;
-            display: inline-block;
-            width: auto;
-            height: 30px;
-        }
+        .rating input {
+			display: none;
+		}
+		.rating {
+			display: flex;
+		}
+		.rating > label {
+			display: block;
+			width: 20px;
+			height: 20px;
+			font-size: 25px;
+			color: orangered; /* color browser dependent */
+			font-family: sans-serif;
+			opacity: 0.33;
+			transition: opacity .2s; /* OPTIONAL */
+		}
+		
+		#star-1:checked ~ label[for="star-1"],
+		#star-1:hover ~ label[for="star-1"],
 
-        .rating>input {
-            opacity: 0;
-            margin-right: -100%;
-            color: #ccc;
-        }
+		#star-2:checked ~ label[for="star-1"],
+		#star-2:checked ~ label[for="star-2"],
+		#star-2:hover ~ label[for="star-1"],
+		#star-2:hover ~ label[for="star-2"],
 
-        .rating>label {
-            position: relative;
-            display: block;
-            float: right;
-            content: '★ ';
-            color: #ccc;
-        }
+		#star-3:checked ~ label[for="star-1"],
+		#star-3:checked ~ label[for="star-2"],
+		#star-3:checked ~ label[for="star-3"],
+		#star-3:hover ~ label[for="star-1"],
+		#star-3:hover ~ label[for="star-2"],
+		#star-3:hover ~ label[for="star-3"],
 
-        .rating>label:before {
-            display: block;
-            opacity:0;
-            width: 30px;
-            height: 30px;
-            content: '★ ';
-            color: orange;
-            transition: opacity 0.2s linear;
-        }
+		#star-4:checked ~ label[for="star-1"],
+		#star-4:checked ~ label[for="star-2"],
+		#star-4:checked ~ label[for="star-3"],
+		#star-4:checked ~ label[for="star-4"],
+		#star-4:hover ~ label[for="star-1"],
+		#star-4:hover ~ label[for="star-2"],
+		#star-4:hover ~ label[for="star-3"],
+		#star-4:hover ~ label[for="star-4"],
 
-        .rating>label:hover:before,
-        .rating>label:hover~label:before,
-        .rating:not(:hover)> :checked~label:before {
-            opacity: 1;
-        }
+		#star-5:checked ~ label[for="star-1"],
+		#star-5:checked ~ label[for="star-2"],
+		#star-5:checked ~ label[for="star-3"],
+		#star-5:checked ~ label[for="star-4"],
+		#star-5:checked ~ label[for="star-5"],
+		#star-5:hover ~ label[for="star-1"],
+		#star-5:hover ~ label[for="star-2"],
+		#star-5:hover ~ label[for="star-3"],
+		#star-5:hover ~ label[for="star-4"],
+		#star-5:hover ~ label[for="star-5"] {
+			opacity: 1;
+		}
     </style>
 </head>
 
@@ -130,17 +145,17 @@
         <div>
             <p>Your Experience<span class="redStar">*</span></p>
             <div class="rating">
-                <input id="rating5" type="radio" name="rating" value="5" checked>
-                <label for="rating5"></label>
-                <input id="rating4" type="radio" name="rating" value="4">
-                <label for="rating4"></label>
-                <input id="rating3" type="radio" name="rating" value="3">
-                <label for="rating3"></label>
-                <input id="rating2" type="radio" name="rating" value="2" >
-                <label for="rating2"></label>
-                <input id="rating1" type="radio" name="rating" value="1">
-                <label for="rating1"></label>
-            </div><br>
+				<input type="radio" name="star" id="star-1" value="1">
+				<input type="radio" name="star" id="star-2" value="2">
+				<input type="radio" name="star" id="star-3" value="3">
+				<input type="radio" name="star" id="star-4" value="4">
+				<input type="radio" name="star" id="star-5" value="5" checked>
+				<label for="star-1">&#9733;</label>
+				<label for="star-2">&#9733;</label>
+				<label for="star-3">&#9733;</label>
+				<label for="star-4">&#9733;</label>
+				<label for="star-5">&#9733;</label>
+			</div><br>
             <span style="font-size: smaller;font-weight: lighter;">Overall how would you rate you experience with
                 us?</span>
         </div>
@@ -156,7 +171,7 @@
                     <td>Very Satisfied</td>
                 </tr>
                 <tr style="background-color:#f0eeee">
-                    <td style="text-align: left">Purchase</td>
+                    <td style="text-align: left">&nbsp;Purchase</td>
                     <td><input type="radio" name="purchase"></td>
                     <td><input type="radio" name="purchase"></td>
                     <td><input type="radio" name="purchase"></td>
@@ -164,7 +179,7 @@
                     <td><input type="radio" name="purchase"></td>
                 </tr>
                 <tr>
-                    <td style="text-align: left">Service</td>
+                    <td style="text-align: left">&nbsp;Service</td>
                     <td><input type="radio" name="service"></td>
                     <td><input type="radio" name="service"></td>
                     <td><input type="radio" name="service"></td>
@@ -172,7 +187,7 @@
                     <td><input type="radio" name="service"></td>
                 </tr>
                 <tr style="background-color:#f0eeee">
-                    <td style="text-align: left">Company Overall</td>
+                    <td style="text-align: left">&nbsp;Company Overall</td>
                     <td><input type="radio" name="CO"></td>
                     <td><input type="radio" name="CO"></td>
                     <td><input type="radio" name="CO"></td>
@@ -194,7 +209,7 @@
                     <td>Very Satisfied</td>
                 </tr>
                 <tr style="background-color:#f0eeee;">
-                    <td style="text-align: left">Buy from us again</td>
+                    <td style="text-align: left">&nbsp;Buy from us again</td>
                     <td><input type="radio" name="BFUA"></td>
                     <td><input type="radio" name="BFUA"></td>
                     <td><input type="radio" name="BFUA"></td>
@@ -202,7 +217,7 @@
                     <td><input type="radio" name="BFUA"></td>
                 </tr>
                 <tr>
-                    <td style="text-align: left">Recommend our product to others</td>
+                    <td style="text-align: left">&nbsp;Recommend our &nbsp;product to others</td>
                     <td><input type="radio" name="RP"></td>
                     <td><input type="radio" name="RP"></td>
                     <td><input type="radio" name="RP"></td>
@@ -210,7 +225,7 @@
                     <td><input type="radio" name="RP"></td>
                 </tr>
                 <tr style="background-color:#f0eeee">
-                    <td style="text-align: left">Recommend our company to others</td>
+                    <td style="text-align: left">&nbsp;Recommend our &nbsp;company to others</td>
                     <td><input type="radio" name="RC"></td>
                     <td><input type="radio" name="RC"></td>
                     <td><input type="radio" name="RC"></td>
